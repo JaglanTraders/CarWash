@@ -3,20 +3,22 @@
         
         $scope.onLoginClick = function () {
             console.log("login clicked");
-            console.log($scope.login);
             var url = apiUrlConfig.login;
             var reqObj = $scope.login;
-            apiMethods.apiPOSTReq(url, reqObj).then(function (response) {
-                console.log("loogin success !!!!!");
-                console.log(response);
-                $rootScope.loggedInStatus = true;
-                $state.go("profile");
-            }, function(response){
-                console.log("login failure !!!!!");
-                console.log(response);
+            apiMethods.apiPOSTReq("/login", reqObj).then(function (response) {
+                console.log("success", response);
+            }, function (response) {
+                console.log("failure", response);
             });
-            localStorage.appLoggedIn = true;
-                $state.go("profile");
+            //apiMethods.apiPOSTReq(url, reqObj).then(function (response) {
+            //    console.log("loogin success !!!!!");
+            //    console.log(response);
+            //    $rootScope.loggedInStatus = true;
+            //    $state.go("profile");
+            //}, function(response){
+            //    console.log("login failure !!!!!");
+            //    console.log(response);
+            //});
         };
 
         $scope.onForgotPassSubmitClick = function(){

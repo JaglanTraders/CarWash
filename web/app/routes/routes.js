@@ -17,10 +17,8 @@
                         // you can lazy load files for an existing module
                         console.log("loading login controller");
                         return $ocLazyLoad.load([
-                            'carwash.common.login.loginModelService',
-                            'carwash.services.apiUrlConfig',
-                            'carwash.services.apiMethods',
-                            'carwash.common.login.loginController'
+                            'loginModel',
+                            'loginController'
                         ]);
                     }]
                 }
@@ -39,7 +37,9 @@
                     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
                         // you can lazy load files for an existing module
                         console.log("loading signUp controller");
-                        return $ocLazyLoad.load(['carwash.common.signUp.signUpController']);
+                        return $ocLazyLoad.load([
+                            'carwash.common.signUp.signUpController'
+                        ]);
                     }]
                 }
             })
@@ -49,15 +49,15 @@
                 //templateUrl:'app/common/login/login.tpl.html'
                 views: {
                     "": {
-                        controller: 'carwash.common.home.homeController', // This view will use AppCtrl loaded below in the resolve
-                        templateUrl: 'app/common/home/home.tpl.html'
+                        controller: 'homeController', // This view will use AppCtrl loaded below in the resolve
+                        templateUrl: 'app/dashboard/home/home.tpl.html'
                     }
                 },
                 resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
                     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-                        // you can lazy load files for an existing module
-                        console.log("loading home controller");
-                        return $ocLazyLoad.load(['carwash.common.home.homeController']);
+                        return $ocLazyLoad.load([
+                            'homeController'
+                        ]);
                     }]
                 }
             })
@@ -94,8 +94,6 @@
                         // you can lazy load files for an existing module
                         console.log("loading changepassword controller");
                         return $ocLazyLoad.load([
-                            'carwash.services.apiUrlConfig',
-                            'carwash.services.apiMethods',
                             'carwash.common.user-dashboard.changepassword.changePasswordController'
                         ]);
                     }]
@@ -116,8 +114,6 @@
                         // you can lazy load files for an existing module
                         console.log("loading changepassword controller");
                         return $ocLazyLoad.load([
-                            'carwash.services.apiUrlConfig',
-                            'carwash.services.apiMethods',
                             'carwash.common.user-dashboard.changepassword.changePasswordController'
                         ]);
                     }]

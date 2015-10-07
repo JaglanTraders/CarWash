@@ -1,16 +1,28 @@
 (function () {
     //declare all modules and their dependencies.
-    angular.module('carwash.common', []);
-    var application = angular.module('carwash.application', ['oc.lazyLoad','ui.router','ui.bootstrap', 'pascalprecht.translate', 'carwash.common']);
+    angular.module('carwash.myControllers', []);
+    angular.module('carwash.myDirectives', []);
+    angular.module('carwash.myServices', []);
+    angular.module('carwash.myModels', []);
+    var application = angular.module('carwash.application', [
+        'oc.lazyLoad',
+        'ui.router',
+        'ui.bootstrap',
+        'pascalprecht.translate',
+        'carwash.myControllers',
+        'carwash.myDirectives',
+        'carwash.myServices',
+        'carwash.myModels'
+    ]);
     application.config(function ($translatePartialLoaderProvider, $translateProvider, $ocLazyLoadProvider,$httpProvider) {
         $httpProvider.defaults.withCredentials = true;
         $ocLazyLoadProvider.config({
-            debug: true,
+            debug: false,
             events: false,
             modules:[
                 {
-                    name: 'carwash.common.home.homeController',
-                    files: ['app/common/home/home-controller.js']
+                    name: 'homeController',
+                    files: ['app/dashboard/home/home-controller.js']
                 },
                 {
                     name: 'carwash.common.header.headerController',
@@ -21,7 +33,7 @@
                     files: ['app/common/l10n/localization-controller.js']
                 },
                 {
-                    name: 'carwash.common.login.loginController',
+                    name: 'loginController',
                     files: ['app/common/login/login-controller.js']
                 },
                 {
@@ -41,7 +53,7 @@
                     files: ['app/services/common-services.js']
                 },
                 {
-                    name: 'carwash.common.login.loginModelService',
+                    name: 'loginModel',
                     files: ['app/common/login/login-model.js']
                 },
                 {

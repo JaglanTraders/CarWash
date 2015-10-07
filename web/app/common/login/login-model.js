@@ -1,5 +1,5 @@
 (function () {
-    angular.module("carwash.application").factory('carwash.common.login.loginModelService', function () {
+    angular.module("carwash.myModels").factory('carwash.common.login.loginModel', function () {
        	return {
        		login : {
        			userName : "userId",

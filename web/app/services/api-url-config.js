@@ -1,8 +1,8 @@
 (function () {
-    angular.module("carwash.application").factory('carwash.services.apiUrlConfig', function () {
-        var basePath = "http://localhost:8080";
+    angular.module("carwash.myServices").factory('carwash.services.apiUrlConfig', function () {
+        var basePath = "http://localhost:4000";
         return {
-            login : basePath+"/login",
+            login : basePath+"/api/login",
             logout : basePath+"/signOut",
             isLoggedIn : basePath+"/isLoggedIn",
             forgotPassword : basePath+"/user/forgotPassword",

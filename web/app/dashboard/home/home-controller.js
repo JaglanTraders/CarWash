@@ -3,10 +3,9 @@
     angular.module('carwash.myControllers').controller('homeController', [
         '$scope',
         '$state',
-        'carwash.services.apiUrlConfig',
-        'carwash.services.apiMethods',
+        'apiUrlConfig',
+        'apiMethods',
         function ($scope, $state, apiUrlConfig, apiMethods) {
-
 
         }
     ]);

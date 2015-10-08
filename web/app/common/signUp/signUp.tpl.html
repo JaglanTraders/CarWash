@@ -1,5 +1,55 @@
-<div>
-    <h1>
-        Sign Up page.
-    </h1>
+<div oc-lazy-load="['formValidations']">
+<form class="col-sm-4 col-sm-offset-4" name="registerForm" novalidate my-validation>
+        <h1>Register</h1>
+        <div class="form-group">
+            <label>Name* :</label>
+            <input type="text" class="form-control" name="name"
+                   required ng-model="register.name"
+                   err-msg-required="Please enter your name"
+                   placeholder="Full Name">
+        </div>
+        <div class="form-group">
+            <label>Email* : </label>
+            <input type="email" class="form-control" name="email"
+                   required ng-model="register.email"
+                   err-msg-required="Please enter your email id"
+                   err-msg-email="Invalid email id"
+                   placeholder="Your Email Id">
+        </div>
+        <div class="form-group">
+            <label>Mobile* : </label>
+            <input type="number" class="form-control" name="mobile" minlength="10" maxlength="10"
+                   required ng-model="register.mobile"
+                   err-msg-required="Please enter your mobile number"
+                   err-msg-number="Invalid mobile number"
+                   err-msg-minlength="Mobile number should be of 10 digits"
+                   err-msg-maxlength="Mobile number should be of 10 digits"
+                   placeholder="Your Mobile Number">
+        </div>
+        <div class="form-group">
+            <label>Password* : </label>
+            <input type="password" class="form-control" name="password"
+                   required ng-model="register.password"
+                   err-msg-required="Please enter your password"
+                   placeholder="Your Password">
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"
+                       ng-model="register.termsAndCondition"
+                       name="termsAndCondition"
+                       err-msg-required="Please accept our terms and conditions"
+                       required>
+                <span>Agree to our Terms & Condition</span>
+            </label>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 ">
+                <button class="btn btn-primary btn-block" ng-click="onSignUpSubmitClick()">Register</button>
+            </div>
+            <div class="col-sm-5 pull-right">
+                <a href="" class="btn btn-link pull-right" ng-click="onSignUpCancelClick()">Cancel</a>
+            </div>
+        </div>
+</form>
 </div>

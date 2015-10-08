@@ -45,7 +45,7 @@
                     files: ['app/common/user-dashboard/changepassword/changepassword-controller.js']
                 },
                 {
-                    name: 'carwash.common.signUp.signUpController',
+                    name: 'signUpController',
                     files: ['app/common/signUp/signUp-controller.js']
                 },
                 {
@@ -57,7 +57,7 @@
                     files: ['app/common/login/login-model.js']
                 },
                 {
-                    name: 'carwash.services.apiMethods',
+                    name: 'apiMethods',
                     files: ['app/services/api-methods.js']
                 },
                 {
@@ -67,6 +67,11 @@
                 {
                     name: 'carwash.application.routes',
                     files: ['app/routes/routes.js']
+                },
+                // Directives
+                {
+                    name: 'formValidations',
+                    files: ['app/directives/validations.js']
                 }
             ]
         });

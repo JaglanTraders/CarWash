@@ -8,7 +8,7 @@
                 //templateUrl:'app/common/login/login.tpl.html'
                 views: {
                     "": {
-                        controller: 'carwash.common.login.loginController', // This view will use AppCtrl loaded below in the resolve
+                        controller: 'loginController', // This view will use AppCtrl loaded below in the resolve
                         templateUrl: 'app/common/login/login.tpl.html'
                     }
                 },
@@ -24,12 +24,12 @@
                 }
             })
             .state('signUp', {
-                url: '/signUp',
+                url: '/register',
                 //controller: 'carwash.common.login.loginController',
                 //templateUrl:'app/common/login/login.tpl.html'
                 views: {
                     "": {
-                        controller: 'carwash.common.signUp.signUpController', // This view will use AppCtrl loaded below in the resolve
+                        controller: 'signUpController', // This view will use AppCtrl loaded below in the resolve
                         templateUrl: 'app/common/signUp/signUp.tpl.html'
                     }
                 },
@@ -38,7 +38,7 @@
                         // you can lazy load files for an existing module
                         console.log("loading signUp controller");
                         return $ocLazyLoad.load([
-                            'carwash.common.signUp.signUpController'
+                            'signUpController'
                         ]);
                     }]
                 }

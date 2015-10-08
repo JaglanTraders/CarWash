@@ -1,60 +1,52 @@
-﻿<!--div class="container">
-	<form class="form-signin">
-        <h2 class="form-signin-heading" translate="SIGN_IN_HEADING"></h2>
-        <label for="inputEmail" class="sr-only" translate="EMAIL"></label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="{{'EMAIL'|translate}}" required autofocus>
-        <label for="inputPassword" class="sr-only" translate="PASSWORD"></label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="{{'PASSWORD'|translate}}" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> <span translate="REMEMBER_ME"></span>
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" translate="SIGN_IN"></button>
-      </form>
-</div>-->
-<form class="col-sm-4 col-sm-offset-4" novalidate>
+﻿<div oc-lazy-load="['formValidations']">
+
     <div class="forgotDiv" ng-show="!forgotPasswordDiv">
-        <h1 translate="SIGN_IN_HEADING"></h1>
-        <div class="form-group">
-            <label translate="EMAIL"></label>
-            <input type="text" class="form-control"
-                   required ng-model="login.userId"
-                   placeholder="{{'EMAIL'|translate}}">
-        </div>
-        <div class="form-group">
-            <label translate="PASSWORD">Password</label>
-            <input type="password" class="form-control"
-                   required ng-model="login.password"
-                   placeholder="{{'PASSWORD'|translate}}">
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="remember-me">  <span translate="REMEMBER_ME"></span>
-            </label>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <button class="btn btn-primary btn-block" ng-click="onLoginClick()"  translate="SIGN_IN"></button>
+        <form class="col-sm-4 col-sm-offset-4" name="loginForm" my-validation novalidate>
+            <h1 translate="SIGN_IN_HEADING"></h1>
+            <div class="form-group">
+                <label>Email Id :</label>
+                <input type="text" class="form-control" name="loginEmail"
+                       ng-model="login.userId"
+                       err-msg-required="Please enter your email id"
+                       placeholder="Email Id" required>
             </div>
-            <div class="col-sm-6">
-                <a class="btn btn-link pull-right" ng-click="forgotPasswordClick()" translate="FORGOT_PASSWORD"></a>
-                <a href="" class="btn btn-link pull-right" translate="SIGN_UP"></a>
+            <div class="form-group">
+                <label>Password :</label>
+                <input type="password" class="form-control" name="loginPassword"
+                       ng-model="login.password"
+                       err-msg-required="Please enter your password"
+                       placeholder="Password" required>
             </div>
-        </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="remember-me">  <span translate="REMEMBER_ME"></span>
+                </label>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary btn-block" ng-click="onLoginClick()"  translate="SIGN_IN"></button>
+                </div>
+                <div class="col-sm-6">
+                    <a class="btn btn-link pull-right" ng-click="forgotPasswordClick()" translate="FORGOT_PASSWORD"></a>
+                    <a href="" class="btn btn-link pull-right" translate="SIGN_UP" ng-click="onSignUpClick()"></a>
+                </div>
+            </div>
+        </form>
     </div>
     <div class="forgotDiv" ng-show="forgotPasswordDiv">
-        <h1>Forgot Password</h1>
-        <div class="form-group">
-            <label>User Id</label>
-            <input type="text" class="form-control"
-                   required ng-model="forgotPassword.userName"
-                   placeholder="{{'EMAIL'|translate}}"/>
-        </div>
-        <div class="col-sm-6">
-            <button class="btn btn-primary btn-block" ng-click="onForgotPassSubmitClick()" >Submit</button>
-        </div>
+        <form class="col-sm-4 col-sm-offset-4" novalidate>
+            <h1>Forgot Password</h1>
+            <div class="form-group">
+                <label>User Id</label>
+                <input type="text" class="form-control"
+                       required ng-model="forgotPassword.userName"
+                       placeholder="{{'EMAIL'|translate}}"/>
+            </div>
+            <div class="col-sm-6">
+                <button class="btn btn-primary btn-block" ng-click="onForgotPassSubmitClick()" >Submit</button>
+            </div>
+        </form>
     </div>
-</form>
 
+</div>
 

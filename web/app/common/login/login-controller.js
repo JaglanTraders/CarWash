@@ -1,24 +1,39 @@
 ﻿(function () {
-    angular.module('carwash.myControllers').controller('carwash.common.login.loginController',[
+    angular.module('carwash.myControllers').controller('loginController',[
         '$scope',
         '$state',
-        'carwash.services.apiUrlConfig',
-        'carwash.services.apiMethods',
-        'carwash.common.login.loginModel',
-        function ($scope, $state, apiUrlConfig, apiMethods, loginModel) {
+        'apiUrlConfig',
+        'apiMethods',
+        'commonService',
+        function ($scope, $state, apiUrlConfig, apiMethods, commonService) {
         
         $scope.onLoginClick = function () {
+            console.log($scope.loginForm);
+            if($scope.loginForm.$invalid){
+                if($scope.loginForm.$error.required != null){
+                    $scope.loginForm.$error.required.forEach(function(element){
+                        element.$setDirty();
+                    });
+                }
+                return;
+            }
             var url = apiUrlConfig.login;
             var reqObj = $scope.login;
             apiMethods.apiPOSTReq(url, reqObj).then(function (response) {
                 console.log("success", response);
                 $state.go("home");
+                //commonService.showSuccessMsg("LoggedIn Successfully");
             }, function (response) {
-                console.log("failure", response);
-                alert("error");
+                $scope.loginForm.loginEmail.$invalid = true;
+                $scope.loginForm.loginPassword.$invalid = true;
+                commonService.onApiResponseError(response);
             });
         };
-
+            
+        $scope.onSignUpClick = function () {
+            $state.go("signUp");
+        };
+            
         $scope.onForgotPassSubmitClick = function(){
             var url = apiUrlConfig.forgotPassword;
             var reqObj = $scope.forgotPassword;

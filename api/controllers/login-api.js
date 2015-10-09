@@ -14,7 +14,7 @@ module.exports = function () {
             if (docs != null) {
                 var loginStats = new loginDetailsModel({
                     id : docs.id,
-                    email : docs.userId,
+                    email : docs.email,
                     date : new Date().toISOString(),
                     ipAddress : req.ip
                 });

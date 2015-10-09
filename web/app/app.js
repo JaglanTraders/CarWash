@@ -25,6 +25,10 @@
                     files: ['app/dashboard/home/home-controller.js']
                 },
                 {
+                    name: 'picUpController',
+                    files: ['app/dashboard/pic-up/pic-up-controller.js']
+                },
+                {
                     name: 'carwash.common.header.headerController',
                     files: ['app/common/header/header-controller.js']
                 },

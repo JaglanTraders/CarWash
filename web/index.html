@@ -10,6 +10,11 @@
 	  <!-- inject:css -->
 	  <!-- built css files will go here... -->
 	  <!-- endinject -->
+	<!-- Google map scripts-->
+	<!--<script src="http://maps.googleapis.com/maps/api/js?v=3?key=AIzaSyD4U3MJDlkTRuq0WrPBtQi71Hrt4PPcGj4"></script>-->
+	<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4U3MJDlkTRuq0WrPBtQi71Hrt4PPcGj4&libraries=places"></script>-->
+	<!-- Google map scripts end-->
+
 </head>
 <body ng-app="carwash.application" >
 
@@ -19,7 +24,8 @@
         </div>
     </section>
 
-	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4U3MJDlkTRuq0WrPBtQi71Hrt4PPcGj4&libraries=places"></script>
+
 	<!-- bower:js -->
 
 	<script src="/bower_components/angular/angular.js"></script>
@@ -55,6 +61,8 @@
 	  <script src="/app/services/api-methods.js"></script>
 	  <script src="/app/services/api-url-config.js"></script>
 	  <script src="/app/services/common-services.js"></script>
+	  <script src="/app/services/map-places.js"></script>
+	  <script src="/app/services/map-service.js"></script>
   	<!-- endinject -->
 </body>
 </html>

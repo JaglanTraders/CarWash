@@ -1,3 +1,15 @@
 .error-msg{
     color: #BD1919;
 }
+
+.shadow{
+    box-shadow: 0px 11px 10px;
+}
+
+.pos-abs{
+    position: absolute;
+    z-index: 9999;
+}
+.top-margin-30{
+    top: 30px;
+}

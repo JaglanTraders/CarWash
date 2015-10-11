@@ -61,10 +61,8 @@
                     }]
                 }
             })
-            .state('pickUp', {
+            .state('home.pickUp', {
                 url: '/pic-up',
-                //controller: 'carwash.common.login.loginController',
-                //templateUrl:'app/common/login/login.tpl.html'
                 views: {
                     "": {
                         controller: 'picUpController', // This view will use AppCtrl loaded below in the resolve
@@ -75,6 +73,22 @@
                     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
                         return $ocLazyLoad.load([
                             'picUpController'
+                        ]);
+                    }]
+                }
+            })
+            .state('home.selectServices', {
+                url: '/select-services',
+                views: {
+                    "": {
+                        controller: 'selectServicesController', // This view will use AppCtrl loaded below in the resolve
+                        templateUrl: 'app/dashboard/select-services/select-services-controller.js'
+                    }
+                },
+                resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+                    loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            'selectServicesController'
                         ]);
                     }]
                 }

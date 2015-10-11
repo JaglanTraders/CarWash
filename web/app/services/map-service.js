@@ -1,8 +1,9 @@
 (function () {
     angular.module("carwash.myServices").factory('mapService', [
         '$q',
+        '$state',
         'mapPlaces',
-        function ($q, mapPlaces) {
+        function ($q, $state, mapPlaces) {
             var currentLocationMarker, pickUpLocationMarker;
             var infoWindow = new google.maps.InfoWindow();
             var initializeMap = function (divId) {
@@ -133,6 +134,7 @@
                 });
                 marker.addListener("click", function () {
                     console.log(marker.getPosition());
+                    $state.go("home.selectServices");
                 });
             };
 

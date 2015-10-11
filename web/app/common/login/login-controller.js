@@ -21,7 +21,7 @@
             var reqObj = $scope.login;
             apiMethods.apiPOSTReq(url, reqObj).then(function (response) {
                 console.log("success", response);
-                $state.go("pickUp");
+                $state.go("home.pickUp");
                 //commonService.showSuccessMsg("LoggedIn Successfully");
             }, function (response) {
                 $scope.loginForm.loginEmail.$invalid = true;

@@ -29,6 +29,14 @@
                     files: ['app/dashboard/pic-up/pic-up-controller.js']
                 },
                 {
+                    name: 'picUpFormController',
+                    files: ['app/dashboard/pic-up/pic-up-form/pic-up-form-controller.js']
+                },
+                {
+                    name: 'selectServicesController',
+                    files: ['app/dashboard/select-services/select-services-controller.js']
+                },
+                {
                     name: 'carwash.common.header.headerController',
                     files: ['app/common/header/header-controller.js']
                 },

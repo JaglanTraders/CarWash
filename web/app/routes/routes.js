@@ -82,7 +82,7 @@
                 views: {
                     "": {
                         controller: 'selectServicesController', // This view will use AppCtrl loaded below in the resolve
-                        templateUrl: 'app/dashboard/select-services/select-services-controller.js'
+                        templateUrl: 'app/dashboard/select-services/select-services.tpl.html'
                     }
                 },
                 resolve: { // Any property in resolve should return a promise and is executed before the view is loaded

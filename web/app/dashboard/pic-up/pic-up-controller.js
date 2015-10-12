@@ -12,6 +12,7 @@
 
             $scope.windowHeight = window.innerHeight;
             console.log(map);
+
             mapPlaces.autoCompleteSearch(map, mapService.updatePickUpLocationMarker);
         }
     ]);

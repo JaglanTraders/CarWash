@@ -4,6 +4,8 @@
         return {
             login : basePath+"/api/login",
             signUp : basePath+"/api/signUp",
+            getServiceTypes : basePath+"/api/serviceTypes",
+
             logout : basePath+"/signOut",
             isLoggedIn : basePath+"/isLoggedIn",
             forgotPassword : basePath+"/user/forgotPassword",

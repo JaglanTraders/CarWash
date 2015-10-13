@@ -65,10 +65,6 @@
                     files: ['app/services/common-services.js']
                 },
                 {
-                    name: 'loginModel',
-                    files: ['app/common/login/login-model.js']
-                },
-                {
                     name: 'apiMethods',
                     files: ['app/services/api-methods.js']
                 },
@@ -84,6 +80,15 @@
                 {
                     name: 'formValidations',
                     files: ['app/directives/validations.js']
+                },
+                // Models
+                {
+                    name: 'loginModel',
+                    files: ['app/common/login/login-model.js']
+                },
+                {
+                    name : 'selectServicesModel',
+                    files : ['app/dashboard/select-services/select-service-model.js']
                 }
             ]
         });

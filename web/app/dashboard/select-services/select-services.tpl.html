@@ -1,12 +1,12 @@
 <div class="col-sm-6 col-sm-offset-3">
     <h3 class="text-center"><b>Select Your Package</b></h3>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default" ng-repeat="services in serviceTypeList | orderBy : 'rank'">
+        <div class="panel panel-default" ng-repeat="services in serviceTypeList">
             <div class="panel-heading" role="tab" id="headingOne{{$index}}">
                 <h4 class="panel-title">
                     <label role="button" data-toggle="collapse" data-parent="#accordion"
                            data-target="#collapseOne{{$index}}" aria-expanded="true" aria-controls="collapseOne{{$index}}">
-                        <input type="radio" ng-checked="$index == 0" name="packages">
+                        <input type="radio" ng-checked="$index == 0" ng-click="onPackageSelected(services.catId)" name="packages">
                         <span>{{services.cat}} Package</span>
                     </label>
                     <span class="pull-right"><b>Rs.</b> {{services.price}}</span>
@@ -22,4 +22,21 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-2 pull-left">
+            <button class="btn btn-primary btn-block">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Back
+            </button>
+        </div>
+        <div class="col-sm-3 pull-right">
+            <button class="btn btn-primary btn-block" ng-click="onSelectServiceNextClick()">
+                Place Request
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
 </div>

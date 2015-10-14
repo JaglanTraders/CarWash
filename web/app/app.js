@@ -37,6 +37,10 @@
                     files: ['app/dashboard/select-services/select-services-controller.js']
                 },
                 {
+                    name: 'verifyDetailsController',
+                    files: ['app/dashboard/verify-details/verify-details-controller.js']
+                },
+                {
                     name: 'carwash.common.header.headerController',
                     files: ['app/common/header/header-controller.js']
                 },

@@ -6,7 +6,8 @@
         function ($q, $state, mapPlaces) {
             var currentLocationMarker, pickUpLocationMarker;
             var infoWindow = new google.maps.InfoWindow();
-            var initializeMap = function (divId) {
+            var initializeMap = function (divId, callback) {
+                console.log(callback);
                 var mapProp = {
                     center:new google.maps.LatLng(51.508742, -0.120850),
                     zoom: 16,
@@ -15,7 +16,7 @@
                 var map = new google.maps.Map(document.getElementById(divId), mapProp);
                 addCurrentLocationControl(map);
                 updateCurrentPosition(map);
-                createPickUpLocationMarker(map);
+                createPickUpLocationMarker(map, callback);
                 createCurrentLocationMarker(map);
                 defineMapListenerEvents(map);
                 return map;
@@ -104,7 +105,8 @@
                 document.getElementById("mapPlacesSearchTxt").value = address;
             };
 
-            var createPickUpLocationMarker = function (map, pos, title) {
+            var createPickUpLocationMarker = function (map, callback) {
+                console.log(callback);
                 var imageUrl = "images/car-pin.png";
                 updateCurrentPosition(map).then(function(data){
                     var pos = {
@@ -115,26 +117,27 @@
                         position: map.getCenter(),
                         map: map,
                         animation: google.maps.Animation.DROP,
-                        title: title,
                         draggable:true,
                         icon : imageUrl
                     });
                     pickUpLocationMarker = marker;
                     showInfoWindow(map, marker, 'Drag it to choose pic up location');
-                    definePickUpLocationMarkerEvents(map, marker);
+                    definePickUpLocationMarkerEvents(map, marker, callback);
                 }, function (data) {
                     console.log("Geolocation service failure / device not supporting");
                 });
             };
 
-            var definePickUpLocationMarkerEvents = function (map, marker) {
+            var definePickUpLocationMarkerEvents = function (map, marker, callback) {
+                console.log(callback);
                 marker.addListener("dragend", function () {
                     //console.log(marker.getPosition());
                     updatePickUpLocationMarker(map, marker.getPosition());
                 });
                 marker.addListener("click", function () {
                     console.log(marker.getPosition());
-                    $state.go("home.selectServices");
+                    console.log(callback);
+                    callback(marker.getPosition());
                 });
             };
 

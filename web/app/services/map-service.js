@@ -135,9 +135,11 @@
                     updatePickUpLocationMarker(map, marker.getPosition());
                 });
                 marker.addListener("click", function () {
-                    console.log(marker.getPosition());
-                    console.log(callback);
-                    callback(marker.getPosition());
+                    var posObj = {
+                        lat : marker.getPosition().lat(),
+                        lng : marker.getPosition().lng()
+                    };
+                    callback(posObj);
                 });
             };
 

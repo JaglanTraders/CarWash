@@ -14,7 +14,7 @@
                 apiMethods.apiGETReq(url).then(function (response) {
                     var responseList = selectServicesModel.digestApiObj(response.data);
                     $scope.serviceTypeList = $filter('orderBy')(responseList, 'rank');
-                    $scope.selectedPackageId = $scope.serviceTypeList[0].catId;
+                    $scope.selectedPackageObj = $scope.serviceTypeList[0];
                 }, function (response) {
                     commonService.onApiResponseError(response);
                 });
@@ -22,12 +22,11 @@
             getServiceTypes();
 
             $scope.onPackageSelected = function(packageId){
-                $scope.selectedPackageId = packageId;
+                $scope.selectedPackageObj = packageId;
             };
 
             $scope.onSelectServiceNextClick = function(){
-                $scope.userOrderObj.serviceCatId = $scope.selectedPackageId;
-                console.log($scope.selectedPackageId);
+                $scope.userOrderObj.packageObj = $scope.selectedPackageObj;
                 $state.go("home.verifyDetails");
             }
         }

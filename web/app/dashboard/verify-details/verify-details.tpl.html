@@ -1,3 +1,68 @@
 <div class="col-sm-6 col-sm-offset-3">
     <h3 class="text-center"><b>Verify Your Details</b></h3>
+    <div class="panel panel-default">
+        <!--<div class="panel-heading">-->
+            <!--<span class="glyphicon glyphicon-home"></span>-->
+            <!--<b>Your Address</b>-->
+            <!--<span class="glyphicon glyphicon-pencil pull-right cursor-pointer" ui-sref="home.pickUp"></span>-->
+        <!--</div>-->
+        <div class="panel-body">
+            <span class="glyphicon glyphicon-home"></span>
+            <b>Your Address</b>
+            <span class="glyphicon glyphicon-pencil pull-right cursor-pointer" ui-sref="home.pickUp"></span>
+            <hr/>
+            <span>{{verifyDetailsObj.address}}</span>
+            <div class="form-group">
+                <span>House No./ Society Name : </span>
+                <input type="text" class="form-control" name="societyName"
+                       ng-model="verifyDetailsObj.societyName"
+                       err-msg-required="Please enter your House No./Society Name"
+                       placeholder="House No./ Society Name (optional)">
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <span class="glyphicon glyphicon-gift"></span>
+            <b>Your Package</b>
+            <span class="glyphicon glyphicon-pencil pull-right cursor-pointer" ui-sref="home.selectServices"></span>
+            <hr/>
+            <span class="glyphicon glyphicon-ok"></span>
+            <label>{{verifyDetailsObj.packageObj.cat}}</label>
+            <label class="pull-right">Rs. {{verifyDetailsObj.packageObj.price}}</label>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <span class="glyphicon glyphicon-tag"></span>
+            <b> Add Voucher Code</b>
+            <hr/>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <input type="text" class="form-control col-sm-3" name="voucherCode"
+                           ng-model="verifyDetailsObj.voucherCode"
+                           placeholder="Add Voucher (optional)">
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary btn-block col-sm-2" ng-click="applyVoucherClick()">Apply</button>
+                </div>
+            </div>
+            <label>Total Rs. {{verifyDetailsObj.packageObj.price}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 pull-left">
+            <button class="btn btn-primary btn-block" ui-sref="home.selectServices">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Back
+            </button>
+        </div>
+        <div class="col-sm-4 pull-right">
+            <button class="btn btn-primary btn-block" ng-click="onVerifyDetailsNextClick()">
+                Select Payment Mode
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </div>
+    </div>
 </div>

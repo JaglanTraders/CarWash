@@ -18,3 +18,7 @@
     float:none;
     margin:0 auto
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}

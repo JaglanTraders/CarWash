@@ -91,6 +91,10 @@
                     files: ['app/common/login/login-model.js']
                 },
                 {
+                    name : 'homeModel',
+                    files : ['app/dashboard/home/home-model.js']
+                },
+                {
                     name : 'selectServicesModel',
                     files : ['app/dashboard/select-services/select-service-model.js']
                 }

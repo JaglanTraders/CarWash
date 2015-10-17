@@ -9,7 +9,7 @@
         'mapPlaces',
         function ($scope, $state, apiUrlConfig, apiMethods, mapService, mapPlaces) {
             var setPicUpLocation = function (positionObj) {
-                $scope.userOrderObj.selectedLocation = positionObj;
+                $scope.userOrderObj.setPicUpLatLng(positionObj);
                 $state.go("home.selectServices");
             };
             var map = mapService.initializeMap("googleMapPicUp", setPicUpLocation);

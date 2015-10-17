@@ -17,7 +17,7 @@ module.exports = function () {
         if(todayDate < validFrom || todayDate > validTo){
             return {
                 status : 404,
-                msg : "This Voucher has been Expired. / Invalid Voucher."
+                message : "This Voucher has been Expired. / Invalid Voucher."
             }
         }
         var discount = (originalPrice/voucherObj.discountPercent)*100;
@@ -25,14 +25,14 @@ module.exports = function () {
             return {
                 status : 200,
                 discountedPrice : originalPrice-voucherObj.maxDiscount,
-                msg : "Voucher applied. Max discount is Rs. "+voucherObj.maxDiscount+" Only."
+                message : "Voucher applied. Max discount is Rs. "+voucherObj.maxDiscount+" Only."
             }
         }
         else{
             return {
                 status : 200,
                 discountedPrice : originalPrice-discount,
-                msg : "Voucher applied."
+                message : "Voucher applied."
             }
         }
     };

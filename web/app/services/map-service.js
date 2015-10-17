@@ -7,7 +7,6 @@
             var currentLocationMarker, pickUpLocationMarker;
             var infoWindow = new google.maps.InfoWindow();
             var initializeMap = function (divId, callback) {
-                console.log(callback);
                 var mapProp = {
                     center:new google.maps.LatLng(51.508742, -0.120850),
                     zoom: 16,
@@ -106,7 +105,6 @@
             };
 
             var createPickUpLocationMarker = function (map, callback) {
-                console.log(callback);
                 var imageUrl = "images/car-pin.png";
                 updateCurrentPosition(map).then(function(data){
                     var pos = {
@@ -129,9 +127,7 @@
             };
 
             var definePickUpLocationMarkerEvents = function (map, marker, callback) {
-                console.log(callback);
                 marker.addListener("dragend", function () {
-                    //console.log(marker.getPosition());
                     updatePickUpLocationMarker(map, marker.getPosition());
                 });
                 marker.addListener("click", function () {

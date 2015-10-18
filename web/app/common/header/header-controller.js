@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('carwash.common').controller('carwash.common.header.headerController', ['$scope', '$rootScope', '$state', 'carwash.services.apiUrlConfig', 'carwash.services.apiMethods', '$translate', '$translatePartialLoader', function ($scope, $rootScope, $state, apiUrlConfig, apiMethods, $translate, $translatePartialLoader) {
+    angular.module('carwash.myControllers').controller('carwash.common.header.headerController', ['$scope', '$rootScope', '$state', 'carwash.services.apiUrlConfig', 'carwash.services.apiMethods', '$translate', '$translatePartialLoader', function ($scope, $rootScope, $state, apiUrlConfig, apiMethods, $translate, $translatePartialLoader) {
 
         $scope.changeLangauge = function (cultureSpecificLanguage) {
             //$translate.refresh();

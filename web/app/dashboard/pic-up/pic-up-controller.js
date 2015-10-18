@@ -13,7 +13,7 @@
                 $state.go("home.selectServices");
             };
             var map = mapService.initializeMap("googleMapPicUp", setPicUpLocation);
-            $scope.windowHeight = window.innerHeight;
+            $scope.windowHeight = window.innerHeight-50;
             console.log(map);
             
             mapPlaces.autoCompleteSearch(map, mapService.updatePickUpLocationMarker);

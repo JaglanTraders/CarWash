@@ -21,6 +21,10 @@
     top: 30px;
 }
 
+.top-margin-50{
+    margin-top: 50px;
+}
+
 .centering{
     float:none;
     margin:0 auto

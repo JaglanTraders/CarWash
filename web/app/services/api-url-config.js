@@ -6,8 +6,8 @@
             signUp : basePath+"/signUp",
             getServiceTypes : basePath+"/serviceTypes",
             applyVoucherCode : basePath+"/applyVoucher",
+            logout : basePath+"/logout",
 
-            logout : basePath+"/signOut",
             isLoggedIn : basePath+"/isLoggedIn",
             forgotPassword : basePath+"/user/forgotPassword",
             changePassword : basePath+"/user/changePassword",

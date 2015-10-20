@@ -2,6 +2,7 @@ var controller;
 var userDetailsModel = require('../models/userDetails');
 var loginDetailsModel = require('../models/loginDetails');
 var commonServices = require('../services/common-services')();
+var authenticationApi = require('./authentication-api')();
 
 module.exports = function () {
     var loginAuth = function (req, res) {
@@ -12,6 +13,8 @@ module.exports = function () {
             if(err)
                 return res.send(err);
             if (docs != null) {
+                //req.session.userObj = docs;
+                authenticationApi.setUserObj(req, docs);
                 var loginStats = new loginDetailsModel({
                     id : docs.id,
                     email : docs.email,

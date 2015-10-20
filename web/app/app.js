@@ -41,7 +41,7 @@
                     files: ['app/dashboard/verify-details/verify-details-controller.js']
                 },
                 {
-                    name: 'carwash.common.header.headerController',
+                    name: 'headerController',
                     files: ['app/common/header/header-controller.js']
                 },
                 {

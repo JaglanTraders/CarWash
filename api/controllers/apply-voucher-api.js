@@ -4,7 +4,6 @@ var commonServices = require('../services/common-services')();
 
 module.exports = function () {
     var processVoucher = function (voucherObj, originalPrice) {
-        console.log("database min AMt", voucherObj.minAmount);
         if(originalPrice <= voucherObj.minAmount){
             return {
                 status : 404,
@@ -44,7 +43,6 @@ module.exports = function () {
         }
 
         voucherListModel.findOne({code :reqObj.voucherCode}, function (err, docs) {
-            console.log("docs", docs);
             if(err)
                 return res.send(err);
             if (docs != null && docs != []) {

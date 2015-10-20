@@ -4,8 +4,6 @@ var commonServices = require('../services/common-services')();
 
 module.exports = function () {
     var getServiceTypes = function (req, res) {
-        console.log("recieved login Auth Req", req.body);
-        console.log("Ip Address", req.ip);
         serviceTypesModel.find(function (err, docs) {
             if(err)
                 return res.send(err);

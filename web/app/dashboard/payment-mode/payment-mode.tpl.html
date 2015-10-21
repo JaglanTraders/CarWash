@@ -1,0 +1,50 @@
+<div class="col-sm-4 col-sm-offset-4">
+    <h3 class="text-center"><b>Select Payment Mode</b></h3>
+    <br/>
+    <div class="panel panel-default">
+        <div class="panel-body text-center">
+            <label  class="width100 cursor-pointer">
+                <b>Amount to Pay <br/><span class="f-22"> Rs. {{amountToPay}} /- </span></b>
+            </label>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <label  class="width100 cursor-pointer">
+                <input type="radio" name="paymentMode" checked>
+                <b>Cash on Delivery</b>
+                <span class="top-5 glyphicon glyphicon-menu-right pull-right"></span>
+            </label>
+        </div>
+        <div class="panel-heading">
+            <label  class="width100 cursor-pointer">
+                <input type="radio" name="paymentMode" disabled>
+                <b>Net Banking</b>
+                <span class="top-5 glyphicon glyphicon-menu-right pull-right"></span>
+            </label>
+        </div>
+        <div class="panel-heading">
+            <label class="width100 cursor-pointer">
+                <input type="radio" name="paymentMode" disabled>
+                <b>Credit / Debit Card</b>
+                <span class="top-5 glyphicon glyphicon-menu-right pull-right"></span>
+            </label>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3 pull-left">
+            <button class="btn btn-primary btn-block" ui-sref="home.verifyDetails">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Back
+            </button>
+        </div>
+        <div class="col-sm-5 pull-right">
+            <button class="btn btn-primary btn-block" ng-click="onPaymentModeNextClick()">
+                Place Request
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </div>
+    </div>
+</div>

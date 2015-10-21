@@ -22,7 +22,7 @@
             });
             
             $scope.onVerifyDetailsNextClick = function () {
-
+                $state.go("home.paymentMode");
             };
 
             $scope.applyVoucherClick = function(){

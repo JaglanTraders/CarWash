@@ -5,6 +5,17 @@
     color: #0000ee;
 }
 
+.width100{
+    width: 100%;
+}
+.top-5 {
+    top: 5px;
+}
+
+.text-center {
+    text-align: center;
+}
+
 .f-22 {
     font-size: 22px;
 }

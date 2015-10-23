@@ -7,6 +7,7 @@
             getServiceTypes : basePath+"/serviceTypes",
             applyVoucherCode : basePath+"/applyVoucher",
             logout : basePath+"/logout",
+            placeOrder : basePath+"/place-order",
 
             isLoggedIn : basePath+"/isLoggedIn",
             forgotPassword : basePath+"/user/forgotPassword",

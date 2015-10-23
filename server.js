@@ -24,7 +24,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-
 app.use(express.static(__dirname + "/"));
 app.use(express.static(__dirname + "/web"));
 app.use(bodyParser.json());

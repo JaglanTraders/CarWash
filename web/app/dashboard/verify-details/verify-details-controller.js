@@ -13,7 +13,7 @@
                 $state.go("home.selectServices");
                 return;
             }
-
+            $scope.societyName = $scope.userOrderObj.getHouseNo();
             $scope.verifyDetailsObj = {};
             mapPlaces.decodeGeocodeLatLng($scope.userOrderObj.getPickUpLatLng()).then(function (response) {
                 $scope.latLngAddress = response[0].formatted_address;
@@ -22,6 +22,7 @@
             });
             
             $scope.onVerifyDetailsNextClick = function () {
+                $scope.userOrderObj.setHouseNo($scope.societyName);
                 $state.go("home.paymentMode");
             };
 
@@ -33,12 +34,13 @@
                 };
                 apiMethods.apiPOSTReq(url, req).then(function (response) {
                     console.log("success", response);
-                    //$scope.verifyDetailsObj.packageObj.fiinalPrice = response.data.discountedPrice;
                     $scope.userOrderObj.setPackageDiscountedPrice(response.data.discountedPrice);
+                    $scope.userOrderObj.setAppliedPromoCode($scope.voucherCode);
                     $scope.voucherSuccessMsg = response.data.message;
                     $scope.voucherErrorMsg = null;
                 }, function (response) {
                     console.log("error", response);
+                    $scope.userOrderObj.setAppliedPromoCode(null);
                     $scope.userOrderObj.setPackageDiscountedPrice($scope.userOrderObj.getPackageOrigionalPrice());
                     $scope.voucherErrorMsg = response.data.message;
                     $scope.voucherSuccessMsg = null;

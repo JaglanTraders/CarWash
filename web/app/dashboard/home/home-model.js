@@ -9,19 +9,35 @@
             var packageDiscountedPrice = obj.packageDiscountedPrice;
             var appliedPromoCode = obj.appliedPromoCode;
             var paymentMode = obj.paymentMode;
+            var houseNo = obj.houseNo;
 
-            var getUserOrderObj = {
-                picUpLatLng : picUpLatLng,
-                packageCat : packageCat,
-                packageCatId : packageCatId,
-                packageOrigionalPrice : packageOrigionalPrice,
-                packageDiscountedPrice : packageDiscountedPrice,
-                appliedPromoCode : appliedPromoCode,
-                paymentMode : paymentMode
+            var getUserOrderObj = function (){
+                return {
+                    picUpLatLng : picUpLatLng,
+                    packageCat : packageCat,
+                    packageCatId : packageCatId,
+                    packageOrigionalPrice : packageOrigionalPrice,
+                    packageDiscountedPrice : packageDiscountedPrice,
+                    appliedPromoCode : appliedPromoCode,
+                    paymentMode : paymentMode,
+                    houseNo : houseNo
+                }
             };
 
             var setPicUpLatLng = function (latLngObj) {
                 picUpLatLng = latLngObj;
+            };
+
+            var setAppliedPromoCode = function (promoCode) {
+                appliedPromoCode = promoCode;
+            };
+
+            var setPaymentMode = function (payMode) {
+                paymentMode = payMode;
+            };
+
+            var setHouseNo = function (flatNo) {
+                houseNo = flatNo;
             };
 
             var setSelectedPackageDetails = function (cat, catId, origionalprice) {
@@ -37,6 +53,14 @@
 
             var getPickUpLatLng = function(){
                 return picUpLatLng;
+            };
+
+            var getPaymentMode = function (payMode) {
+                return paymentMode;
+            };
+
+            var getHouseNo = function (flatNo) {
+                return houseNo;
             };
 
             var getPackageDiscountedPrice = function(){
@@ -56,10 +80,15 @@
                 setPicUpLatLng : setPicUpLatLng,
                 setSelectedPackageDetails : setSelectedPackageDetails,
                 setPackageDiscountedPrice : setPackageDiscountedPrice,
+                setAppliedPromoCode : setAppliedPromoCode,
+                setPaymentMode : setPaymentMode,
+                setHouseNo : setHouseNo,
                 getPickUpLatLng : getPickUpLatLng,
                 getPackageDiscountedPrice : getPackageDiscountedPrice,
                 getPackageOrigionalPrice : getPackageOrigionalPrice,
-                getPackageCategory : getPackageCategory
+                getPackageCategory : getPackageCategory,
+                getHouseNo : getHouseNo,
+                getPaymentMode : getPaymentMode
             }
         };
         return {

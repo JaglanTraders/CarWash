@@ -24,7 +24,7 @@
                 }
             };
 
-            var setPicUpLatLng = function (latLngObj) {
+            var setPickUpLatLng = function (latLngObj) {
                 picUpLatLng = latLngObj;
             };
 
@@ -77,7 +77,7 @@
 
             return {
                 getUserOrderObj : getUserOrderObj,
-                setPicUpLatLng : setPicUpLatLng,
+                setPickUpLatLng : setPickUpLatLng,
                 setSelectedPackageDetails : setSelectedPackageDetails,
                 setPackageDiscountedPrice : setPackageDiscountedPrice,
                 setAppliedPromoCode : setAppliedPromoCode,

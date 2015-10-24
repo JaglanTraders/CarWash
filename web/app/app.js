@@ -41,6 +41,10 @@
                     files: ['app/dashboard/verify-details/verify-details-controller.js']
                 },
                 {
+                    name: 'orderConfirmationController',
+                    files: ['app/dashboard/order-confirmation/order-confirmation-controller.js']
+                },
+                {
                     name: 'paymentModeController',
                     files: ['app/dashboard/payment-mode/payment-mode-controller.js']
                 },

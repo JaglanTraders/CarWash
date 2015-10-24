@@ -50,9 +50,9 @@
             var onApiResponseError = function (response) {
                 if(response.data != null){
                     if(response.data.message == "Unauthorized access") {
-                        showErrorMsg(response.data.message);
                         $state.go("login");
                     }
+                    showErrorMsg(response.data.message);
                 }
                 else
                     showErrorMsg("Server Failure");

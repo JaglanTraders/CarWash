@@ -29,8 +29,11 @@
                 console.log(req);
                 apiMethods.apiPOSTReq(url, req).then(function (response) {
                     console.log("Success : ", response);
+                    $state.go("home.orderConfirmation",{
+                        picUpDetails : response.data
+                    });
                 }, function (response) {
-                    commonService.onApiResponseError(response.data.message);
+                    commonService.onApiResponseError(response);
                 });
             };
         }

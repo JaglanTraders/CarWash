@@ -135,7 +135,7 @@
                         lat : marker.getPosition().lat(),
                         lng : marker.getPosition().lng()
                     };
-                    callback(posObj);
+                    callback(map, marker, posObj);
                 });
             };
 
@@ -172,6 +172,7 @@
 
             return {
                 initializeMap : initializeMap,
+                showInfoWindow : showInfoWindow,
                 updatePickUpLocationMarker : updatePickUpLocationMarker
             }
         }

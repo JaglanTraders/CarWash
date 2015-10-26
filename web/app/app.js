@@ -61,8 +61,8 @@
                     files: ['app/common/login/login-controller.js']
                 },
                 {
-                    name: 'carwash.common.user-dashboard.profile.profileController',
-                    files: ['app/common/user-dashboard/profile/profile-controller.js']
+                    name: 'profileController',
+                    files: ['app/dashboard/profile/profile-controller.js']
                 },
                 {
                     name: 'carwash.common.user-dashboard.changepassword.changePasswordController',

@@ -144,21 +144,19 @@
                     }]
                 }
             })
-            .state('profile', {
+            .state('home.profile', {
                 url: '/profile',
-                //controller: 'carwash.common.login.loginController',
-                //templateUrl:'app/common/login/login.tpl.html'
                 views: {
                     "": {
-                        controller: 'carwash.common.user-dashboard.profile.profileController', // This view will use AppCtrl loaded below in the resolve
-                        templateUrl: 'app/common/user-dashboard/profile/profile.tpl.html'
+                        controller: 'profileController', // This view will use AppCtrl loaded below in the resolve
+                        templateUrl: 'app/dashboard/profile/profile.tpl.html'
                     }
                 },
                 resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
                     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-                        // you can lazy load files for an existing module
-                        console.log("loading profile controller");
-                        return $ocLazyLoad.load(['carwash.common.user-dashboard.profile.profileController']);
+                        return $ocLazyLoad.load([
+                            'profileController'
+                        ]);
                     }]
                 }
             })

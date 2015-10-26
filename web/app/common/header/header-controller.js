@@ -23,7 +23,8 @@
             };
             
             $scope.getLoggedInUserName = function () {
-                return commonService.getObjFromLocalStore().userName;
+                if(commonService.getObjFromLocalStore() != null)
+                    return commonService.getObjFromLocalStore().userName;
             };
         }
     ]);

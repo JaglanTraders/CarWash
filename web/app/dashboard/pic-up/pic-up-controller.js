@@ -23,7 +23,6 @@
                     else
                         mapService.showInfoWindow(map, marker, "Server failure");
                 });
-
             };
             var map = mapService.initializeMap("googleMapPicUp", setPicUpLocation);
             $scope.windowHeight = window.innerHeight-50;

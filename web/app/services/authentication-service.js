@@ -25,7 +25,6 @@
 
                     if( isLogin && toState.name == "login"){
                         event.preventDefault();
-                        commonService.showInfoMsg("You are already logged in");
                         if(fromState.name == "" || fromState.name == null || fromState.name == undefined){
                             handleLoginAuthentication();
                             return null;

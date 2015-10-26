@@ -1,8 +1,19 @@
-<div>
-    <h1>
-        This is profile page.
-    </h1>
-
-    <a href="#changepassword">Change password</a>
-    
+<div class="col-sm-6 col-sm-offset-3">
+    <br/>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-user"></span>
+            <b>Personal Details</b>
+            <span class="glyphicon glyphicon-pencil pull-right cursor-pointer"></span>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <span>House No./ Society Name : </span>
+                <input type="text" class="form-control" name="societyName"
+                       ng-model="societyName"
+                       err-msg-required="Please enter your House No./Society Name"
+                       placeholder="House No./ Society Name (optional)">
+            </div>
+        </div>
+    </div>
 </div>

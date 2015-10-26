@@ -9,7 +9,7 @@ module.exports = function () {
             //res.send(commonServices.onSuccessJson("Service Available"));
             res.send(response);
         }, function (response) {
-            res.status(404).send(commonServices.onErrorJson("Service not Available"));
+            res.status(404).send(commonServices.onErrorJson(response));
         });
     };
 

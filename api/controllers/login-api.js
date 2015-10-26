@@ -1,10 +1,32 @@
-var controller;
+var deferred = require('deferred');
 var userDetailsModel = require('../models/userDetails');
 var loginDetailsModel = require('../models/loginDetails');
 var commonServices = require('../services/common-services')();
 var authenticationApi = require('./authentication-api')();
+var orderService = require('../services/order-service')();
 
 module.exports = function () {
+
+    var loginResponseObj = function (userObj) {
+        var q= deferred();
+        orderService.getOpenOrderForUser(userObj.id).then(function (response) {
+            var obj = {
+                userId : userObj.id,
+                userName : userObj.name,
+                openOrder : true
+            };
+            q.resolve(obj);
+        }, function (response) {
+            var obj = {
+                userId : userObj.id,
+                userName : userObj.name,
+                openOrder : false
+            };
+            q.resolve(obj);
+        });
+        return q.promise;
+    };
+
     var loginAuth = function (req, res) {
         console.log("recieved login Auth Req", req.body);
         console.log("Ip Address", req.ip);
@@ -13,7 +35,6 @@ module.exports = function () {
             if(err)
                 return res.send(err);
             if (docs != null) {
-                //req.session.userObj = docs;
                 authenticationApi.setUserObj(req, docs);
                 var loginStats = new loginDetailsModel({
                     id : docs.id,
@@ -25,7 +46,9 @@ module.exports = function () {
                     if(err)
                         console.log("error while saving in login details"+ err);
                 });
-                return res.send(commonServices.onSuccessJson("Login Success"));
+                loginResponseObj(authenticationApi.getUserObj(req)).then(function (response) {
+                    res.send(response);
+                });
             }
             else
                 return res.status(404).send(commonServices.onErrorJson("Invalid UserId / Password"));

@@ -8,6 +8,8 @@
             applyVoucherCode : basePath+"/applyVoucher",
             logout : basePath+"/logout",
             placeOrder : basePath+"/place-order",
+            openOrder : basePath+"/open-order",
+            cancelOrder : basePath+"/cancel-order",
             isServiceAvailable : basePath+"/isServiceAvailable",
 
             isLoggedIn : basePath+"/isLoggedIn",

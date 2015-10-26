@@ -14,12 +14,17 @@
                 var url = apiUrlConfig.logout;
                 apiMethods.apiPOSTReq(url).then(function (response) {
                     console.log(response);
+                    commonService.logout();
                     $state.go("login");
                     commonService.showSuccessMsg(response.data.message);
                 }, function(response){
                     commonService.onApiResponseError(response);
                 });
-            }
+            };
+            
+            $scope.getLoggedInUserName = function () {
+                return commonService.getObjFromLocalStore().userName;
+            };
         }
     ]);
 })();

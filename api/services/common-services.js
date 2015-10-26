@@ -57,9 +57,10 @@ module.exports = function () {
         return q.promise;
     };
 
-    var isOrderIdExist = function (userId) {
+    var isOrderIdExist = function (id) {
         var q = deferred();
-        userDetailsModel.findOne({orderId : userId}, function (err, doc) {
+        placeOrderModel.findOne({orderId : id}, function (err, doc) {
+            console.log("doc order exist", doc);
             if(doc != null) {
                 q.reject(true);
             }
@@ -73,15 +74,23 @@ module.exports = function () {
     var getNewUniqueOrderId = function () {
         var q = deferred();
         placeOrderModel.find(function (err, doc) {
-            var id = doc.length;
-            var result = function (uid) {
-                isOrderIdExist(uid).then(function (data) {
-                    q.resolve(uid);
-                }, function (data) {
-                    result(uid+1);
-                });
-            };
-            result(id);
+            console.log("doc order", doc);
+            if(!err) {
+                var id = parseInt(doc.length);
+                console.log("doc length", id);
+                var result = function (uid) {
+                    console.log("doc length increment", uid);
+                    isOrderIdExist(uid).then(function (data) {
+                        q.resolve(uid);
+                    }, function (data) {
+                        result(uid + 1);
+                    });
+                };
+                result(id);
+            }
+            else{
+                q.reject();
+            }
         });
         return q.promise;
     };

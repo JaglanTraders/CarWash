@@ -8,7 +8,9 @@
             </button>
             <a class="navbar-brand" href="">iiLA Car Care</a>
             <a class="navbar-brand">|</a>
-            <a class="navbar-brand pull-right" href=""><span class="glyphicon glyphicon-user"></span>  Jaggu</a>
+            <a class="navbar-brand pull-right" href=""><span class="glyphicon glyphicon-user"></span>
+                {{loggedInUserName || getLoggedInUserName()}}
+            </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">

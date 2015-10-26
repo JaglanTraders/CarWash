@@ -1,14 +1,23 @@
-<div class="col-sm-6 col-sm-offset-3">
+<div class="col-sm-4 col-sm-offset-4">
     <h3 class="text-center"><b>Order Confirmation</b></h3>
     <div class="panel panel-default">
         <div class="panel-body text-center">
-            <label  class="width100 cursor-pointer">
-                <b>Your Order has been confirmed</b><br/>
-                <b>Pic Up Details</b><br/>
-                Name : {{orderConfirmationObj.staffName}}<br/>
-                Mobile : {{orderConfirmationObj.staffMobile}}<br/>
-                Time : {{orderConfirmationObj.expectedTime}}
-            </label>
+            <!--<label  class="width100 cursor-pointer">-->
+                <b>Your Order has been placed</b><hr/>
+                Our executive <br/>
+                <b>{{orderConfirmationObj.staffName}}</b> <br/>
+                will be reaching you in another
+                <!--<label class="circle-70">-->
+                    <h4>{{orderConfirmationObj.expectedTime}}</h4>
+                <!--</label>-->
+                You can contact him at <br/> <b>{{orderConfirmationObj.staffMobile}}</b>
+            <!--</label>-->
         </div>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary btn-block" ng-click="onCancelOrderClick(orderConfirmationObj.orderId)">
+            <span class="glyphicon glyphicon-remove"></span>
+            Cancel Order
+        </button>
     </div>
 </div>

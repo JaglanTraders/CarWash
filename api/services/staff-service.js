@@ -4,6 +4,7 @@ var commonServices = require('./common-services')();
 var distanceMatrixService = require('./distance-matrix-service')();
 
 module.exports = function () {
+
     var getAvailableStaffList = function (originCords) {
         var userLat = parseFloat(originCords.lat);
         var userLng = parseFloat(originCords.lng);
@@ -57,8 +58,9 @@ module.exports = function () {
         var q = deferred();
         getAvailableStaffList(originCords).then(function (staffList) {
             if(staffList != null && staffList.length != 0) {
+                console.log("available staff List haha" , staffList);
                 var staffObj = getNearestStaff(originCords, staffList);
-                console.log("distance", staffObj.distance);
+                console.log("staff obj", staffObj);
                 q.resolve(staffObj);
             }
             else{
@@ -70,22 +72,42 @@ module.exports = function () {
         return q.promise;
     };
 
-    var getServiceAvailabilty = function (originCords) {
+    var changeStaffAvailabilityStatus = function (staffId, status) {
         var q = deferred();
-        getAvailableStaff(originCords).then(function (data) {
-            console.log("distance B/w them", data.distance);
-            if(data.distance < 50000)
-                q.resolve(data);
-            else
-                q.reject("Service not available in this area");
-        }, function(data){
-            q.reject("Our all executives are busy at this time. Please try after some time");
+        var options = { safe: true };
+        console.log("staff Id", staffId);
+        staffListModel.update({staffId : staffId}, { serviceAvailability: status }, options, function (err, numAffected) {
+            console.log("first Argument", err);
+            console.log("second Args", numAffected);
+            if(numAffected.n !=0){
+                q.resolve("updated");
+            }
+            else{
+                q.reject("not updated");
+            }
+        });
+        return q.promise;
+    };
+
+    var getStaffObj = function (staffId) {
+        var q = deferred();
+        staffListModel.findOne({staffId : staffId}, function (err, doc) {
+            if(err){
+                q.reject();
+            }
+            else if(doc == null){
+                q.reject();
+            }
+            else{
+                q.resolve(doc);
+            }
         });
         return q.promise;
     };
 
     return {
         getAvailableStaff : getAvailableStaff,
-        getServiceAvailabilty : getServiceAvailabilty
+        changeStaffAvailabilityStatus : changeStaffAvailabilityStatus,
+        getStaffObj : getStaffObj
     }
 };

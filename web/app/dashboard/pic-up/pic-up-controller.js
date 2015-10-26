@@ -18,7 +18,10 @@
                 apiMethods.apiPOSTReq(url, req).then(function (response) {
                     $state.go("home.selectServices");
                 }, function (response) {
-                    mapService.showInfoWindow(map, marker, "Oops! Service not available in this area.");
+                    if(response.data != null)
+                        mapService.showInfoWindow(map, marker, response.data.message);
+                    else
+                        mapService.showInfoWindow(map, marker, "Server failure");
                 });
 
             };

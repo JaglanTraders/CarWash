@@ -11,7 +11,14 @@
 .top-5 {
     top: 5px;
 }
-
+.circle-70 {
+    border: 1px solid;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    line-height: 70px;
+    background-color: white;
+}
 .text-center {
     text-align: center;
 }

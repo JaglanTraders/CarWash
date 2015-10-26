@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var staffListSchema = new Schema({
-    staffId : String,
+    staffId : Number,
     email : String,
     password : String,
     name : String,
@@ -10,8 +10,8 @@ var staffListSchema = new Schema({
     mobile : String,
     address : String,
     vendor : String,
-    vendorId : String,
-    serviceAvailabilty : Boolean,
+    vendorId : Number,
+    serviceAvailability : Boolean,
     locationList : Array
 });
 

@@ -5,7 +5,8 @@
         'apiUrlConfig',
         'apiMethods',
         'commonService',
-        function ($scope, $state, apiUrlConfig, apiMethods, commonService) {
+        'authenticationService',
+        function ($scope, $state, apiUrlConfig, apiMethods, commonService, authenticationService) {
         
         $scope.onLoginClick = function () {
             console.log($scope.loginForm);
@@ -21,8 +22,8 @@
             var reqObj = $scope.login;
             apiMethods.apiPOSTReq(url, reqObj).then(function (response) {
                 console.log("success", response);
-                $state.go("home.pickUp");
-                //commonService.showSuccessMsg("LoggedIn Successfully");
+                commonService.saveObjToLocalStore(response.data);
+                authenticationService.handleLoginAuthentication();
             }, function (response) {
                 $scope.loginForm.loginEmail.$invalid = true;
                 $scope.loginForm.loginPassword.$invalid = true;

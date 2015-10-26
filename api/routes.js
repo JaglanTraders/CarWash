@@ -7,6 +7,7 @@ var serviceTypesApi = require('./controllers/select-services-api')();
 var applyVoucherApi = require('./controllers/apply-voucher-api')();
 var authenticationApi = require('./controllers/authentication-api')();
 var placeRequestApi = require('./controllers/place-request-api')();
+var cancelOrderApi = require('./controllers/cancel-order-api')();
 var isServiceAvailableApi = require('./controllers/service-availability-api')();
 
 router.all("*", authenticationApi.checkAuthentication);
@@ -18,6 +19,8 @@ router.post("/signUp", signUpApi.signUp);
 router.get("/serviceTypes", serviceTypesApi.getServiceTypes);
 router.post("/applyVoucher", applyVoucherApi.applyVoucher);
 router.post("/place-order", placeRequestApi.placeRequest);
+router.get("/open-order", placeRequestApi.getOpenOrderDetails);
+router.post("/cancel-order", cancelOrderApi.cancelOrder);
 
 
 module.exports = router;

@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var serviceTypesSchema = new Schema({
     cat : String,
-    catId: String,
+    catId: Number,
     rank : String,
     catName: String,
     description: String,

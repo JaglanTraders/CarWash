@@ -2,15 +2,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ordersListSchema = new Schema({
-    orderId : String,
+    orderId : Number,
     orderDateTime : String,
     orderLocation : Object,
     houseNo : String,
-    userId : String,
-    vendorId : String,
-    assignedStaffId : String,
+    userId : Number,
+    vendorId : Number,
+    assignedStaffId : Number,
     expectedPicUpTime : String,
-    packageId : String,
+    packageId : Number,
     promoCode : String,
     amount : String,
     paymentMode : String,

@@ -1,7 +1,8 @@
 (function () {
     angular.module("carwash.myServices").factory('commonService',[
         '$state',
-        function ($state) {
+        '$rootScope',
+        function ($state, $rootScope) {
 
             var showSuccessMsg = function(msg){
                 jQuery.noConflict();
@@ -58,12 +59,33 @@
                     showErrorMsg("Server Failure");
             };
 
+            var localStoreDBName = "carwashDB";
+            var saveObjToLocalStore = function (obj) {
+                if(obj != null && obj != undefined && obj != "")
+                    $rootScope.loggedInStatus = true;
+                var obj2Json = JSON.stringify(obj);
+                $rootScope.loggedInUserName = obj.userName;
+                localStorage.setItem(localStoreDBName,obj2Json);
+            };
+
+            var getObjFromLocalStore = function(){
+                var data = localStorage.getItem(localStoreDBName);
+                return JSON.parse(data);
+            };
+
+            var logout = function () {
+                localStorage.setItem(localStoreDBName, null);
+            };
+            
             return {
                 showSuccessMsg: showSuccessMsg,
                 showInfoMsg : showInfoMsg,
                 showWarningMsg : showWarningMsg,
                 showErrorMsg : showErrorMsg,
-                onApiResponseError : onApiResponseError
+                onApiResponseError : onApiResponseError,
+                saveObjToLocalStore : saveObjToLocalStore,
+                getObjFromLocalStore : getObjFromLocalStore,
+                logout : logout
             }
         }
     ]);

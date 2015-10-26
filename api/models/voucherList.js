@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var voucherListSchema = new Schema({
-    id : String,
+    id : Number,
     code : String,
     maxDiscount : String,
     discountPercent : String,

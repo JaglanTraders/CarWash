@@ -29,6 +29,7 @@
                 console.log(req);
                 apiMethods.apiPOSTReq(url, req).then(function (response) {
                     console.log("Success : ", response);
+                    commonService.updateOpenOrderStatusInLocalStore(true);
                     $state.go("home.orderConfirmation",{
                         picUpDetails : response.data
                     });

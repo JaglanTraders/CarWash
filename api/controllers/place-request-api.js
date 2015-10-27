@@ -6,6 +6,7 @@ var orderService = require('../services/order-service')();
 var staffService = require('../services/staff-service')();
 var distanceMatrixService = require('../services/distance-matrix-service')();
 var authenticationApi = require('./authentication-api')();
+var emailService = require('../services/send-email-service')();
 
 module.exports = function () {
     var placeRequest = function (req, res) {
@@ -16,6 +17,7 @@ module.exports = function () {
                 orderService.placeOrder(req.body, userObj, staffObj).then(function (orderObj) {
                     staffService.changeStaffAvailabilityStatus(staffObj.staffId, false).then(function (response) {
                         var resObj = orderService.orderConfirmationResponseObj(staffObj, orderObj);
+                        emailService.sendMailOnPlaceOrder(userObj, orderObj);
                         res.send(resObj);
                     },function(response){
                         var resObj = orderService.orderConfirmationResponseObj(staffObj, orderObj);

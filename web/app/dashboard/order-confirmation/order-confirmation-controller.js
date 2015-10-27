@@ -25,6 +25,7 @@
                     var url = apiUrlConfig.cancelOrder;
                     apiMethods.apiPOSTReq(url, {orderId : orderId}).then(function (response) {
                         commonService.showSuccessMsg("Your Order has been cancelled");
+                        commonService.updateOpenOrderStatusInLocalStore(false);
                         $state.go("home.pickUp");
                     }, function (response) {
                        commonService.onApiResponseError(response);

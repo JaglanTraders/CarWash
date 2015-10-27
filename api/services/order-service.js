@@ -66,14 +66,13 @@ module.exports = function () {
                 q.reject("Order Not found");
             }
             else if(doc != null){
-                var staffId = doc.assignedStaffId;
                 doc.orderStatus = "cancelled";
                 doc.save(function (err) {
                     if(err){
                         q.reject("Could not update order status");
                     }
                     else{
-                        q.resolve(staffId);
+                        q.resolve(doc);
                     }
                 });
             }

@@ -27,6 +27,10 @@
                             $state.go('home.orderConfirmation');
                         }
                     }
+                    else if(!isLogin && (toState.name != "signUp" || toState.name != "login")){
+                        event.preventDefault();
+                        $state.go("login");
+                    }
                 }
             );
             $rootScope.$on('$stateChangeError',

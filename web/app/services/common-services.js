@@ -73,6 +73,12 @@
                 return JSON.parse(data);
             };
 
+            var updateOpenOrderStatusInLocalStore = function (status) {
+                var obj = getObjFromLocalStore();
+                obj.openOrder = status;
+                saveObjToLocalStore(obj);
+            };
+
             var logout = function () {
                 localStorage.setItem(localStoreDBName, null);
             };
@@ -85,6 +91,7 @@
                 onApiResponseError : onApiResponseError,
                 saveObjToLocalStore : saveObjToLocalStore,
                 getObjFromLocalStore : getObjFromLocalStore,
+                updateOpenOrderStatusInLocalStore : updateOpenOrderStatusInLocalStore,
                 logout : logout
             }
         }

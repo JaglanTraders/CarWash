@@ -4,7 +4,6 @@ var loginDetailsModel = require('../models/loginDetails');
 var commonServices = require('../services/common-services')();
 var authenticationApi = require('./authentication-api')();
 var orderService = require('../services/order-service')();
-var emailService = require('../services/send-email-service')();
 
 module.exports = function () {
 
@@ -31,7 +30,6 @@ module.exports = function () {
     var loginAuth = function (req, res) {
         console.log("recieved login Auth Req", req.body);
         console.log("Ip Address", req.ip);
-        emailService.sendMail();
         userDetailsModel.findOne({email : req.body.userId, password : req.body.password}, function (err, docs) {
             console.log(docs);
             if(err)

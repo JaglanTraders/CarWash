@@ -6,15 +6,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">iiLA Car Care</a>
+            <a class="navbar-brand" ui-sref="home.pickUp">iiLA Car Care</a>
             <a class="navbar-brand">|</a>
-            <a class="navbar-brand pull-right" href=""><span class="glyphicon glyphicon-user"></span>
+            <a class="navbar-brand pull-right" ui-sref="home.pickUp"><span class="glyphicon glyphicon-user"></span>
                 {{loggedInUserName || getLoggedInUserName()}}
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li ui-sref="home.profile"><a class="cursor-pointer"><span></span> My Account</a></li>
+                <li ui-sref="home.profile"><a class="cursor-pointer"><span></span> My Profile</a></li>
+                <li ui-sref="home.changePassword"><a class="cursor-pointer"><span></span>Change Password</a></li>
                 <li><a class="cursor-pointer"><span></span> History</a></li>
                 <li ng-click="onLogoutClick()"><a class="cursor-pointer"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>

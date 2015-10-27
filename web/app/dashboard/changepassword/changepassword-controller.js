@@ -1,35 +1,39 @@
 (function () {
 
-    angular.module('carwash.common').controller('carwash.common.user-dashboard.changepassword.changePasswordController', ['$scope', '$state', 'carwash.services.apiUrlConfig', 'carwash.services.apiMethods','$stateParams', function ($scope, $state, apiUrlConfig, apiMethods, $stateParams) {
+    angular.module('carwash.myControllers').controller('changePasswordController', [
+        '$scope',
+        '$state',
+        'apiUrlConfig',
+        'apiMethods',
+        'commonService',
+        '$stateParams',
+        function ($scope, $state, apiUrlConfig, apiMethods, commonService, $stateParams) {
+            $scope.onChangePasswordSubmitClick = function(){
+                if($scope.changePasswordForm.$invalid){
+                    if($scope.changePasswordForm.$error.required != null){
+                        $scope.changePasswordForm.$error.required.forEach(function(element){
+                            element.$setDirty();
+                        });
+                    }
+                    return null;
+                }
+                else if($scope.changePasswordObj.oldPassword == $scope.changePasswordObj.newPassword){
+                    commonService.showInfoMsg("Old Password & new Password Can't be same");
+                    return null;
+                }
+                var url = apiUrlConfig.changePassword;
+                var reqObj = $scope.changePasswordObj;
+                apiMethods.apiPOSTReq(url, reqObj).then(function (response) {
+                    commonService.showSuccessMsg("Password Changed Successfully");
+                    $state.go("home.pickUp");
+                }, function(response){
+                    commonService.onApiResponseError(response);
+                });
+            };
 
-    	console.log($stateParams.uuid);
-    	var resetUUID = $stateParams.uuid;
-    	if(resetUUID != null && resetUUID != "" && resetUUID != undefined){
-    		$scope.isResettingPass = true;
-    		var url = apiUrlConfig.resetPasswordAuth+"/"+resetUUID;
-            //var reqObj = $scope.changepassword;
-            apiMethods.apiPOSTReq(url).then(function (response) {
-                console.log(" resetPasswordAuth service success !!!!!");
-                
-            }, function(response){
-                console.log("resetPasswordAuth service failure !!!!!");
-                console.log(response);
-            });
-    	}
-
-    	$scope.onChangePasswordClick = function(){
-    		if(resetUUID != null && resetUUID != "" && resetUUID != undefined)
-	    		var url = apiUrlConfig.resetPassword;
-	    	else
-    			var url = apiUrlConfig.changePassword;
-            var reqObj = $scope.changepassword;
-            apiMethods.apiPOSTReq(url, reqObj).then(function (response) {
-                console.log("service success !!!!!");
-                
-            }, function(response){
-                console.log("service failure !!!!!");
-                console.log(response);
-            });
-    	}
-    }]);
+            $scope.onChangePasswordCancelClick = function () {
+                $state.go("home.pickUp");
+            }
+        }
+    ]);
 })();

@@ -65,8 +65,8 @@
                     files: ['app/dashboard/profile/profile-controller.js']
                 },
                 {
-                    name: 'carwash.common.user-dashboard.changepassword.changePasswordController',
-                    files: ['app/common/user-dashboard/changepassword/changepassword-controller.js']
+                    name: 'changePasswordController',
+                    files: ['app/dashboard/changepassword/changepassword-controller.js']
                 },
                 {
                     name: 'signUpController',
@@ -92,6 +92,10 @@
                 {
                     name: 'formValidations',
                     files: ['app/directives/validations.js']
+                },
+                {
+                    name: 'stringToNumber',
+                    files: ['app/directives/string-to-number.js']
                 },
                 // Models
                 {

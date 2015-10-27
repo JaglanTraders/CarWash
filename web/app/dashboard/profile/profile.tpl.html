@@ -1,19 +1,68 @@
-<div class="col-sm-6 col-sm-offset-3">
+<div class="col-sm-6 col-sm-offset-3" oc-lazy-load="['formValidations', 'stringToNumber']">
     <br/>
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <span class="glyphicon glyphicon-user"></span>
-            <b>Personal Details</b>
-            <span class="glyphicon glyphicon-pencil pull-right cursor-pointer"></span>
-        </div>
-        <div class="panel-body">
-            <div class="form-group">
-                <span>House No./ Society Name : </span>
-                <input type="text" class="form-control" name="societyName"
-                       ng-model="societyName"
-                       err-msg-required="Please enter your House No./Society Name"
-                       placeholder="House No./ Society Name (optional)">
+
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-user"></span>
+                <b>My Profile</b>
+                <span ng-if="!accountEditMode" class="glyphicon glyphicon-pencil pull-right cursor-pointer" ng-click="editProfile()"></span>
             </div>
-        </div>
+        <form name="myAccountForm" my-validation novalidate>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>User Id  </label>
+                    </div>
+                    <div class="col-sm-5">
+                        {{myAccountObj.emailId}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>Name </label>
+                    </div>
+                    <div class="col-sm-5">
+                        <span ng-if="!accountEditMode">{{myAccountObj.name}}</span>
+                        <div class="form-group clearfix" ng-if="accountEditMode">
+                            <input type="text" name="name"
+                                   err-msg-required="Please enter your name" class="form-control"
+                                   ng-model="myAccountEditObj.name" placeholder="Name" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>Mobile No. </label>
+                    </div>
+                    <div class="col-sm-5">
+                        <span ng-if="!accountEditMode">{{myAccountObj.mobile}}</span>
+                        <div class="form-group clearfix" ng-if="accountEditMode">
+                            <input type="number" class="form-control" name="mobile" minlength="10" maxlength="10"
+                                   required ng-model="myAccountEditObj.mobile"
+                                   string-to-number
+                                   err-msg-required="Please enter your mobile number"
+                                   err-msg-number="Invalid mobile number"
+                                   err-msg-minlength="Mobile number should be of 10 digits"
+                                   err-msg-maxlength="Mobile number should be of 10 digits"
+                                   placeholder="Your Mobile Number">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" ng-if="accountEditMode">
+                <div class="col-sm-2 col-sm-offset-3">
+                    <button class="btn btn-primary btn-block" ng-click="cancelEditProfile()">
+                        Cancel
+                    </button>
+                </div>
+                <div class="col-sm-2 col-sm-offset-1">
+                    <button class="btn btn-primary btn-block" ng-click="saveEditedProfile()">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
+
 </div>

@@ -4,7 +4,8 @@ var fs = require('fs');
 var morgan = require('morgan');
 var bodyParser = require("body-parser");
 var mongoose = require('mongoose');
-var session = require('express-session')
+var session = require('express-session');
+var cors = require('cors');
 var db = mongoose.connection;
 var router = require('./api/routes');
 // create a write stream (in append mode)
@@ -24,6 +25,12 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+
+var corsOptions = {
+    origin: 'http://jagdeeps:4000',
+    credentials : true
+};
+app.use(cors(corsOptions));
 app.use(express.static(__dirname + "/"));
 app.use(express.static(__dirname + "/web"));
 app.use(bodyParser.json());

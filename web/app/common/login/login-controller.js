@@ -23,7 +23,7 @@
             apiMethods.apiPOSTReq(url, reqObj).then(function (response) {
                 console.log("success", response);
                 commonService.saveObjToLocalStore(response.data);
-                authenticationService.handleLoginAuthentication();
+                $state.go("home.pickUp");
             }, function (response) {
                 $scope.loginForm.loginEmail.$invalid = true;
                 $scope.loginForm.loginPassword.$invalid = true;

@@ -4,15 +4,6 @@
         '$state',
         'commonService',
         function ($rootScope, $state, commonService) {
-            var handleLoginAuthentication = function () {
-                var obj = commonService.getObjFromLocalStore();
-                if(obj.openOrder){
-                    $state.go('home.orderConfirmation');
-                }
-                else{
-                    $state.go("home.pickUp");
-                }
-            };
 
             $rootScope.$on('$stateChangeStart',
                 function(event, toState, toParams, fromState, fromParams){
@@ -26,22 +17,16 @@
                     if( isLogin && toState.name == "login"){
                         event.preventDefault();
                         if(fromState.name == "" || fromState.name == null || fromState.name == undefined){
-                            handleLoginAuthentication();
+                            $state.go("home.pickUp");
                             return null;
                         }
                     }
-                    //else if(isLogin && (toState.name == "resetpassword")){
-                    //    //if(isLogin.forcePasswordChange != 1 && isLogin.passwordExpired != true) {
-                    //    event.preventDefault();
-                    //    commonService.showErrorMsg("invalid access");
-                    //    //}
-                    //}
-                    //else if(!isLogin && toState.name != "resetpassword" && toState.name != "login"){
-                    //    event.preventDefault();
-                    //    $state.go("login", {referal: toState.name, params : toParams});
-                    //    commonService.showErrorMsg("Please login to continue");
-                    //    return;
-                    //}
+                    else if(isLogin && (toState.name == "home.pickUp" || toState.name == "home.selectServices" || toState.name == "home.verifyDetails" || toState.name == "home.paymentMode")){
+                        if(commonService.getObjFromLocalStore().openOrder) {
+                            event.preventDefault();
+                            $state.go('home.orderConfirmation');
+                        }
+                    }
                 }
             );
             $rootScope.$on('$stateChangeError',
@@ -53,7 +38,7 @@
             );
 
             return {
-                handleLoginAuthentication : handleLoginAuthentication
+
             }
         }
     ]);

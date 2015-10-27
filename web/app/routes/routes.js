@@ -160,22 +160,18 @@
                     }]
                 }
             })
-            .state('changepassword', {
-                url: '/changepassword',
-                //controller: 'carwash.common.login.loginController',
-                //templateUrl:'app/common/login/login.tpl.html'
+            .state('home.changePassword', {
+                url: '/change-password',
                 views: {
                     "": {
-                        controller: 'carwash.common.user-dashboard.changepassword.changePasswordController', // This view will use AppCtrl loaded below in the resolve
-                        templateUrl: 'app/common/user-dashboard/changepassword/changepassword.tpl.html'
+                        controller: 'changePasswordController', // This view will use AppCtrl loaded below in the resolve
+                        templateUrl: 'app/dashboard/changepassword/changepassword.tpl.html'
                     }
                 },
                 resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
                     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-                        // you can lazy load files for an existing module
-                        console.log("loading changepassword controller");
                         return $ocLazyLoad.load([
-                            'carwash.common.user-dashboard.changepassword.changePasswordController'
+                            'changePasswordController'
                         ]);
                     }]
                 }

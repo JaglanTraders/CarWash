@@ -11,13 +11,14 @@
             openOrder : basePath+"/open-order",
             cancelOrder : basePath+"/cancel-order",
             isServiceAvailable : basePath+"/isServiceAvailable",
+            getMyAccount : basePath+"/account",
+            changePassword : basePath+"/change-password",
 
             isLoggedIn : basePath+"/isLoggedIn",
             forgotPassword : basePath+"/user/forgotPassword",
-            changePassword : basePath+"/user/changePassword",
             resetPassword : basePath+"/user/resetPassword",
-            resetPasswordAuth : basePath+"/user/resetPassword",
-            getMyAccount : basePath+"/user/myAccount"
+            resetPasswordAuth : basePath+"/user/resetPassword"
+
         }
     });
 })();

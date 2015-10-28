@@ -14,7 +14,7 @@
                     else
                         isLogin = false;
 
-                    if( isLogin && toState.name == "login"){
+                    if( isLogin && (toState.name == "login" || toState.name == "signUp")){
                         event.preventDefault();
                         if(fromState.name == "" || fromState.name == null || fromState.name == undefined){
                             $state.go("home.pickUp");
@@ -27,7 +27,7 @@
                             $state.go('home.orderConfirmation');
                         }
                     }
-                    else if(!isLogin && (toState.name != "signUp" || toState.name != "login")){
+                    else if(!isLogin && (toState.name != "signUp" && toState.name != "login")){
                         event.preventDefault();
                         $state.go("login");
                     }

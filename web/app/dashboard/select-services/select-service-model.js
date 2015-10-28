@@ -1,5 +1,5 @@
 (function () {
-    angular.module("carwash.myModels").factory('carwash.dashboard.select-service.selectServicesModel', function () {
+    angular.module("carwash.myModels").factory('selectServicesModel', function () {
        	var digestApiObj = function (apiObj) {
 			var arr =[];
 			for(var i=0;i< apiObj.length; i++){

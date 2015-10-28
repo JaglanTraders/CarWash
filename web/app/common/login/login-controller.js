@@ -36,19 +36,33 @@
         };
             
         $scope.onForgotPassSubmitClick = function(){
+            if($scope.forgotPasswordForm.$invalid){
+                if($scope.forgotPasswordForm.$error.required != null){
+                    $scope.forgotPasswordForm.$error.required.forEach(function(element){
+                        element.$setDirty();
+                    });
+                }
+                return;
+            }
             var url = apiUrlConfig.forgotPassword;
             var reqObj = $scope.forgotPassword;
             apiMethods.apiPOSTReq(url, reqObj).then(function (response) {
                 console.log("service success !!!!!");
-                
+                commonService.showSuccessMsg(response.data.message);
+                $scope.onForgotPassCancelClick();
+                $scope.forgotPassword.userId = "";
+                $scope.forgotPasswordForm.forgotEmailId.$dirty = false;
             }, function(response){
-                console.log("service failure !!!!!");
-                console.log(response);
+                commonService.onApiResponseError(response);
             });
         };
 
         $scope.forgotPasswordClick = function(){
             $scope.forgotPasswordDiv = true;
+        };
+
+        $scope.onForgotPassCancelClick = function(){
+            $scope.forgotPasswordDiv = false;
         }
     }]);
 })();

@@ -1,0 +1,28 @@
+<div class="col-sm-5 col-sm-offset-4">
+	<br/>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="glyphicon glyphicon-th-list"></span>
+			<b>Order History</b>
+		</div>
+		<div class="panel-body">
+			<div class="panel panel-default" ng-repeat="order in orderHistoryObj | orderBy : '-orderId'">
+				<div class="panel-body">
+					<span class="pull-left"><b>Order No. : {{order.orderId}}</b></span>
+					<span class="pull-right">{{order.orderDateTime}}</span>
+					<br/>
+					<hr/>
+					<!--<label>Order PicUp Location : </label>-->
+					<!--<span>{{order.orderLocation}}</span>-->
+					<label class="pull-left">Amount : <span><b>Rs. {{order.amount}} /-</b></span></label>
+
+					<label class="pull-right">Status: {{order.orderStatus}} </label>
+					<br/>
+					<br/>
+					<label>Estimated PicUp Time : </label>
+					<span>{{order.expectedPicUpTime}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

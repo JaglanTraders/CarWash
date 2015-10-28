@@ -13,9 +13,10 @@
             isServiceAvailable : basePath+"/isServiceAvailable",
             getMyAccount : basePath+"/account",
             changePassword : basePath+"/change-password",
+            forgotPassword : basePath+"/forgot-password",
+            orderHistory : basePath+"/order-history",
 
             isLoggedIn : basePath+"/isLoggedIn",
-            forgotPassword : basePath+"/user/forgotPassword",
             resetPassword : basePath+"/user/resetPassword",
             resetPasswordAuth : basePath+"/user/resetPassword"
 

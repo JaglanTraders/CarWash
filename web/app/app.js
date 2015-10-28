@@ -69,6 +69,10 @@
                     files: ['app/dashboard/changepassword/changepassword-controller.js']
                 },
                 {
+                    name: 'orderHistoryController',
+                    files: ['app/dashboard/order-history/order-history-controller.js']
+                },
+                {
                     name: 'signUpController',
                     files: ['app/common/signUp/signUp-controller.js']
                 },
@@ -105,6 +109,10 @@
                 {
                     name : 'homeModel',
                     files : ['app/dashboard/home/home-model.js']
+                },
+                {
+                    name : 'orderHistoryModel',
+                    files : ['app/dashboard/order-history/order-history-model.js']
                 },
                 {
                     name : 'selectServicesModel',

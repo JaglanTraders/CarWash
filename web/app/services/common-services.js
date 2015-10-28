@@ -51,6 +51,7 @@
             var onApiResponseError = function (response) {
                 if(response.data != null){
                     if(response.data.message == "Unauthorized access") {
+                        logout();
                         $state.go("login");
                     }
                     showErrorMsg(response.data.message);
@@ -83,6 +84,10 @@
                 localStorage.setItem(localStoreDBName, null);
             };
             
+            var formatISODate = function (isoDateFormat) {
+                var dt = new Date(isoDateFormat);
+                return dt.getDate() +"/"+dt.getMonth()+"/"+dt.getFullYear() + ", "+dt.getHours() + ":"+dt.getMinutes()+":"+dt.getSeconds();
+            };
             return {
                 showSuccessMsg: showSuccessMsg,
                 showInfoMsg : showInfoMsg,
@@ -92,7 +97,8 @@
                 saveObjToLocalStore : saveObjToLocalStore,
                 getObjFromLocalStore : getObjFromLocalStore,
                 updateOpenOrderStatusInLocalStore : updateOpenOrderStatusInLocalStore,
-                logout : logout
+                logout : logout,
+                formatISODate : formatISODate
             }
         }
     ]);

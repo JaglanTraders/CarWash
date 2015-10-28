@@ -63,9 +63,27 @@ module.exports = function () {
             console.log('Message sent: ' + info.response);
         });
     };
+
+    var sendForgotPasswordMail = function (userObj) {
+        var subject = "Regarding your forgot password request.";
+        var body = 'Hello '+userObj.name+', ' +
+            '<br/><br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As per your request for forgot password,'+
+            ' below are the login details for your account with us.<br/><br/>Email Id : <b>'+userObj.email+'</b>'+
+                '<br/>Password : <b>'+userObj.password+'</b>';
+        var mailTo = userObj.email;
+        transporter.sendMail(mailOptions(mailTo, subject, body), function(error, info){
+            if(error){
+                return console.log(error);
+            }
+            console.log('Message sent: ' + info.response);
+        });
+    };
+
+
     return {
         sendMailOnSignUp : sendMailOnSignUp,
         sendMailOnPlaceOrder : sendMailOnPlaceOrder,
-        sendMailOnCancelOrder : sendMailOnCancelOrder
+        sendMailOnCancelOrder : sendMailOnCancelOrder,
+        sendForgotPasswordMail : sendForgotPasswordMail
     }
 };

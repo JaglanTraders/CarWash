@@ -144,6 +144,23 @@
                     }]
                 }
             })
+            .state('home.orderHistory', {
+                url: '/order-history',
+                views: {
+                    "": {
+                        controller: 'orderHistoryController', // This view will use AppCtrl loaded below in the resolve
+                        templateUrl: 'app/dashboard/order-history/order-history.tpl.html'
+                    }
+                },
+                resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+                    loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            'orderHistoryModel',
+                            'orderHistoryController'
+                        ]);
+                    }]
+                }
+            })
             .state('home.profile', {
                 url: '/profile',
                 views: {

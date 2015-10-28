@@ -8,7 +8,6 @@
         'mapService',
         'mapPlaces',
         function ($scope, $state, apiUrlConfig, apiMethods, mapService, mapPlaces) {
-
             var setPicUpLocation = function (map, marker, positionObj) {
                 $scope.userOrderObj.setPickUpLatLng(positionObj);
                 var url = apiUrlConfig.isServiceAvailable;

@@ -1,7 +1,11 @@
 var commonServices = require('../services/common-services')();
 
 module.exports = function () {
-    var excludeRoutes = ["/login", "/signUp"];
+    var excludeRoutes = [
+        "/login",
+        "/signUp",
+        "/forgot-password"
+    ];
     var checkAuthentication = function (req, res, next) {
         var index = excludeRoutes.indexOf(req.url);
         if(index == -1 && req.session.userObj == null){

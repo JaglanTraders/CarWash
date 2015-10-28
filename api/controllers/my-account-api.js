@@ -2,6 +2,7 @@ var deferred = require('deferred');
 var authenticationApi = require('./authentication-api')();
 var userDetailsModel = require('../models/userDetails');
 var commonServices = require('../services/common-services')();
+var emailService = require('../services/send-email-service')();
 
 module.exports = function () {
 
@@ -88,9 +89,51 @@ module.exports = function () {
         });
     };
 
+    var sendForgotPasswordMail = function (userId) {
+        var q = deferred();
+        userDetailsModel.findOne({id : userId}, function (err, doc) {
+            if(doc != null){
+                doc.password = passObj.newPassword || doc.password;
+                doc.save(function (err) {
+                    if(err){
+                        q.reject("could not able to update password");
+                    }
+                    else{
+                        q.resolve(doc);
+                    }
+                });
+            }
+            else{
+                q.reject("Old Password Not matching");
+            }
+        });
+    };
+
+    var forgotPasswordApi = function (req, res) {
+        var userId = req.body.userId;
+        if(userId == null || userId == ""){
+            res.status(404).send(commonServices.onErrorJson("Invalid Request"));
+        }
+        else{
+            userDetailsModel.findOne({email : userId}, function (err, doc) {
+                if(doc != null){
+                    emailService.sendForgotPasswordMail(doc);
+                    res.send(commonServices.onSuccessJson("An Email with your password detail has been send to your registered email id"))
+                }
+                else if(doc == null){
+                    res.status(404).send(commonServices.onErrorJson("This email id doesn't exist"));
+                }
+                else{
+                    res.status(404).send(commonServices.onErrorJson("This email id doesn't exist"));
+                }
+            });
+        }
+    };
+
     return {
         getMyAccountDetails : getMyAccountDetails,
         saveMyAccount : saveMyAccount,
-        changePassword : changePassword
+        changePassword : changePassword,
+        forgotPasswordApi : forgotPasswordApi
     }
 };

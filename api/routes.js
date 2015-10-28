@@ -10,6 +10,7 @@ var placeRequestApi = require('./controllers/place-request-api')();
 var cancelOrderApi = require('./controllers/cancel-order-api')();
 var isServiceAvailableApi = require('./controllers/service-availability-api')();
 var myAccountApi = require('./controllers/my-account-api')();
+var orderHistoryApi = require('./controllers/order-history-api')();
 
 router.all("*", authenticationApi.checkAuthentication);
 router.post("/login", loginApi.loginAuth);
@@ -25,6 +26,8 @@ router.post("/cancel-order", cancelOrderApi.cancelOrder);
 router.get("/account", myAccountApi.getMyAccountDetails);
 router.post("/account", myAccountApi.saveMyAccount);
 router.post("/change-password", myAccountApi.changePassword);
+router.post("/forgot-password", myAccountApi.forgotPasswordApi);
+router.get("/order-history", orderHistoryApi.getOrderHistory);
 
 
 module.exports = router;

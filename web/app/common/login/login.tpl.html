@@ -1,8 +1,10 @@
 ﻿<div oc-lazy-load="['formValidations']">
 
-    <div class="forgotDiv" ng-show="!forgotPasswordDiv">
-        <form class="col-sm-4 col-sm-offset-4" name="loginForm" my-validation novalidate>
-            <h1 translate="SIGN_IN_HEADING"></h1>
+    <div class="forgotDiv panel panel-default col-sm-4 col-sm-offset-4 top-margin-50" ng-show="!forgotPasswordDiv">
+        <div class="panel-body">
+            <form name="loginForm" my-validation novalidate>
+            <h3>Sign In</h3>
+                <hr/>
             <div class="form-group">
                 <label>Email Id :</label>
                 <input type="text" class="form-control" name="loginEmail"
@@ -18,34 +20,52 @@
                        placeholder="Password" required>
             </div>
             <div class="checkbox">
-                <label>
+                <label class="pull-left">
                     <input type="checkbox" name="remember-me">  <span translate="REMEMBER_ME"></span>
+                </label>
+                <label class="pull-right">
+                    <a class="btn btn-link pull-right" ng-click="forgotPasswordClick()">Forgot Password ?</a>
                 </label>
             </div>
             <div class="row">
-                <div class="col-sm-6">
-                    <button class="btn btn-primary btn-block" ng-click="onLoginClick()"  translate="SIGN_IN"></button>
-                </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-link pull-right" ng-click="forgotPasswordClick()" translate="FORGOT_PASSWORD"></a>
-                    <a href="" class="btn btn-link pull-right" translate="SIGN_UP" ng-click="onSignUpClick()"></a>
-                </div>
+                <!--<div class="col-sm-6">-->
+                <button class="btn btn-primary btn-block pull-left" ng-click="onLoginClick()"  translate="SIGN_IN"></button>
+                <!--</div>-->
+            </div>
+            <div class="row">
+                <a href="" class="btn btn-link pull-right cursor-pointer" ng-click="onSignUpClick()">
+                    <b>Register Now</b>
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
             </div>
         </form>
+        </div>
     </div>
-    <div class="forgotDiv" ng-show="forgotPasswordDiv">
-        <form class="col-sm-4 col-sm-offset-4" novalidate>
-            <h1>Forgot Password</h1>
-            <div class="form-group">
-                <label>User Id</label>
-                <input type="text" class="form-control"
-                       required ng-model="forgotPassword.userName"
-                       placeholder="{{'EMAIL'|translate}}"/>
-            </div>
-            <div class="col-sm-6">
-                <button class="btn btn-primary btn-block" ng-click="onForgotPassSubmitClick()" >Submit</button>
-            </div>
-        </form>
+    <div class="forgotDiv panel panel-default col-sm-4 col-sm-offset-4 top-margin-50" ng-show="forgotPasswordDiv">
+        <div class="panel-body">
+            <form name="forgotPasswordForm" my-validation novalidate>
+                <h3>Forgot Password</h3>
+                <hr/>
+                <div class="form-group">
+                    <label>Email Id</label>
+                    <input type="text" class="form-control" name="forgotEmailId"
+                           required ng-model="forgotPassword.userId"
+                           err-msg-required="Please enter your email id."
+                           placeholder="Email Id"/>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5 pull-left">
+                        <a class="pull-left cursor-pointer" ng-click="onForgotPassCancelClick()" >
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            Back to Login
+                        </a>
+                    </div>
+                    <div class="col-sm-5 pull-right">
+                        <button class="btn btn-primary btn-block pull-right" ng-click="onForgotPassSubmitClick()" >Get Password</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
 </div>

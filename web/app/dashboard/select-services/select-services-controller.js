@@ -6,7 +6,7 @@
         'apiUrlConfig',
         'apiMethods',
         'commonService',
-        'carwash.dashboard.select-service.selectServicesModel',
+        'selectServicesModel',
         function ($scope, $state, $filter, apiUrlConfig, apiMethods, commonService, selectServicesModel) {
 
             if($scope.userOrderObj.getPickUpLatLng() == null || $scope.userOrderObj.getPickUpLatLng() == ""){

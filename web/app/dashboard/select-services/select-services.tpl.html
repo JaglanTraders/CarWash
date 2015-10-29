@@ -5,14 +5,14 @@
             <div class="panel-heading" role="tab" id="headingOne{{$index}}">
                 <h4 class="panel-title">
                     <label role="button" data-toggle="collapse" data-parent="#accordion"
-                           data-target="#collapseOne{{$index}}" aria-expanded="true" aria-controls="collapseOne{{$index}}">
+                           data-target="#collapseOne{{$index}}" aria-expanded="false" aria-controls="collapseOne{{$index}}">
                         <input type="radio" ng-checked="$index == 0" ng-click="onPackageSelected(services)" name="packages">
                         <span>{{services.cat}} Package</span>
                     </label>
                     <span class="pull-right"><b>Rs.</b> {{services.price}}</span>
                 </h4>
             </div>
-            <div id="collapseOne{{$index}}" class="panel-collapse collapse in" role="tabpanel"
+            <div id="collapseOne{{$index}}" class="panel-collapse collapse" ng-class="{'in' : $index == 0}" role="tabpanel"
                  aria-labelledby="headingOne{{$index}}">
                 <div class="panel-body">
                     <ul>

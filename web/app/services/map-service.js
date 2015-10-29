@@ -8,7 +8,7 @@
             var infoWindow = new google.maps.InfoWindow();
             var initializeMap = function (divId, callback) {
                 var mapProp = {
-                    center:new google.maps.LatLng(51.508742, -0.120850),
+                    //center:new google.maps.LatLng(51.508742, -0.120850),
                     zoom: 16,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };

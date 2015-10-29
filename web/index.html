@@ -17,7 +17,11 @@
 
 </head>
 <body ng-app="carwash.application" >
-
+	<div id="loadingDiv" class="loading-indicator">
+		<div style="text-align: center;">
+			<img src="web/images/loading.gif"/>
+		</div>
+	</div>
 	<div ui-view>
 
 	</div>
@@ -62,6 +66,7 @@
 	  <script src="/app/services/map-places.js"></script>
 	  <script src="/app/services/map-service.js"></script>
 	  <script src="/app/services/authentication-service.js"></script>
+	  <script src="/app/services/http-interceptor.js"></script>
   	<!-- endinject -->
 </body>
 </html>

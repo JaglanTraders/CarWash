@@ -7,7 +7,9 @@
         'apiMethods',
         'mapService',
         'mapPlaces',
-        function ($scope, $state, apiUrlConfig, apiMethods, mapService, mapPlaces) {
+        '$timeout',
+        function ($scope, $state, apiUrlConfig, apiMethods, mapService, mapPlaces, $timeout) {
+            $scope.windowHeight = window.innerHeight-50;
             var setPicUpLocation = function (map, marker, positionObj) {
                 $scope.userOrderObj.setPickUpLatLng(positionObj);
                 var url = apiUrlConfig.isServiceAvailable;
@@ -23,12 +25,11 @@
                         mapService.showInfoWindow(map, marker, "Server failure");
                 });
             };
+            document.getElementById("googleMapPicUp").innerHTML = "";
             var map = mapService.initializeMap("googleMapPicUp", setPicUpLocation);
-            $scope.windowHeight = window.innerHeight-50;
-            console.log(map);
-            
             mapPlaces.autoCompleteSearch(map, mapService.updatePickUpLocationMarker);
-            
+            console.log(map);
+            //map.events.trigger(map, 'resize');
 
         }
     ]);

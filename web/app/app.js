@@ -16,6 +16,7 @@
     ]);
     application.config(function ($translatePartialLoaderProvider, $translateProvider, $ocLazyLoadProvider,$httpProvider) {
         $httpProvider.defaults.withCredentials = true;
+        $httpProvider.interceptors.push('myHttpInterceptor');
         $ocLazyLoadProvider.config({
             debug: false,
             events: false,
